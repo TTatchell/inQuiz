@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import { decode } from 'he'
 
 const QuestionRender = (props) => {
 
@@ -7,7 +8,7 @@ const QuestionRender = (props) => {
     })
 
     return (
-        <h1>{props.questionProp.question}</h1>
+        <h1>{decode(props.questionProp.question)}</h1>
     )
 }
 
