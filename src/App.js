@@ -1,5 +1,6 @@
 import './App.css';
-import TestApi from './Components/TestApi'
+//import TestApi from './Components/TestApi'
+import Quiz from './Components/Quiz'
 
 function App() {
 
@@ -7,7 +8,8 @@ function App() {
 
   return (
     <div className="App">
-      < TestApi />
+      {/* < TestApi /> */}
+      < Quiz />
     </div>
   );
 }
