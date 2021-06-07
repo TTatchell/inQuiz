@@ -6,7 +6,7 @@ const TestApi = () => {
     const [question, setQuestion] = useState(['nothing', 'hey']);
 
     const handleClick = async () => {
-        const URL = 'https://opentdb.com/api.php?amount=10&category=21&type=multiple&encode=base64'
+        const URL = 'https://opentdb.com/api.php?amount=10&type=multiple'
 
         const response = await fetch(URL)
 
