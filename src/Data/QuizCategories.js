@@ -53,3 +53,13 @@ export const valueArray = [
     '31',
     '32'
 ]
+
+
+// const categories = { a: 1, 
+//     b: 2, 
+//     c: 3 
+//    };
+
+// for (const category in categories) {
+// <option categories[category]
+// }
