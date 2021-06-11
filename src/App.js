@@ -3,47 +3,49 @@ import { useState } from 'react'
 import Quiz from './Components/Quiz'
 import MenuBar from './Components/MenuBar'
 import LockScreen from './Components/LockScreen'
-import LoginForm from './Components/LoginForm'
-import CreateNewUser from './Components/CreateNewUser'
+import TestBackEnd from './Components/TestBackEnd';
 
 function App() {
 
   const [appDisplay, setAppDisplay] = useState('locked')
+  const [username, setUserName] = useState('')
 
-  const handleLoginClick = () => {
-    console.log('login')
-    setAppDisplay('loginForm')
+  const updateUsername = (name) => {
+    setUserName(name)
   }
 
-  const handleCreateClick = () => {
-    console.log('create')
-    setAppDisplay('createUser')
+  const submitUsername = () => {
+    setAppDisplay('unlocked')
+  }
+
+  const handleLogOut = () => {
+    setAppDisplay('locked')
+    setUserName('')
+
   }
 
   switch (appDisplay) {
     case 'unlocked':
       return (
         <div className="App">
-          < MenuBar />
-          < Quiz />
+          < MenuBar
+            username={username}
+            handleLogOut={handleLogOut} />
+            
+          < Quiz username={username} />
         </div>
       )
 
     case 'locked':
       return (
         < LockScreen
-          handleLoginClick={handleLoginClick}
-          handleCreateClick={handleCreateClick}
+          updateUsername={updateUsername}
+          submitUsername={submitUsername}
         />
       )
 
-    case 'loginForm':
-      return (
-        <LoginForm />
-      )
-
-    case 'createUser':
-      return <CreateNewUser />
+    case 'testBackEnd':
+      return < TestBackEnd />
 
     default:
       return (

@@ -1,15 +1,26 @@
 const LockScreen = (props) => {
 
-    
+    const handleChange = (event) => {
+        props.updateUsername(event.target.value)
+    }
+
+    const handleSubmit = (event) => {
+        props.submitUsername()
+    }
+
+
 
     return (
         <div>
-            <div>
-                <button onClick={event=>props.handleLoginClick()}>Login</button>
-            </div>
-            <div>
-                <button onClick={event=>props.handleCreateClick()}>Create New User</button>
-            </div>
+            <h1>ENTER NAME</h1>
+            <input type='text' onChange={event => handleChange(event)}>
+            </input>
+
+            <button onClick={event => handleSubmit(event)}>
+                Let's Go!
+            </button>
+
+
         </div>
     )
 }
