@@ -49,11 +49,11 @@ const Quiz = () => {
 
 
     const handleReturnToMenu = () => {
-
+        console.log('PUSHING SCORE TO SERVER')
         ////////////////////THIS IS WHERE SCORE WILL BE PUSHED//////////////////////////////////
         setDisplay('start')
         setQuestionIndex(0)
-        console.log('clearing score')
+        console.log('resetting score state')
         setScore(0)
     }
 
@@ -70,11 +70,8 @@ const Quiz = () => {
         }
         else if (questionIndex >= 0 && questionIndex <= 9) {
             setAnswerArray(shuffle([questions[questionIndex]['correct_answer'], ...questions[questionIndex]['incorrect_answers']]))
-
         }
-
-
-    }, [questionIndex])
+    }, [questionIndex, questions])
 
 
     switch (display) {
@@ -124,10 +121,10 @@ const Quiz = () => {
         case 'showScore':
             return (
                 <div>
-                    < ShowScore  
-                    ReturnButton={handleReturnToMenu}
-                    score={score}
-                    
+                    < ShowScore
+                        ReturnButton={handleReturnToMenu}
+                        score={score}
+
                     />
                 </div>
             )
