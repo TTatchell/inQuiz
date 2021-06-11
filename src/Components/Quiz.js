@@ -12,6 +12,7 @@ const Quiz = () => {
     const [questions, setQuestions] = useState({})
     const [questionIndex, setQuestionIndex] = useState(-1)
     const [answerArray, setAnswerArray] = useState([])
+    const [score, setScore] = useState(0)
 
     const handleBegin = async () => {
         setDisplay('loading')
@@ -25,7 +26,14 @@ const Quiz = () => {
     }
 
     const incrementIndex = async () => {
-        setQuestionIndex(questionIndex + 1)
+        if (questionIndex < 10) {
+            setQuestionIndex(questionIndex + 1)
+        }
+    }
+
+    const incrementScore = () => {
+        console.log('correct!')
+        setScore(score + 1)
     }
 
     //Thanks to javascriopt.info for the Fisher-Yates shuffle.
@@ -41,12 +49,15 @@ const Quiz = () => {
 
 
     const handleReturnToMenu = () => {
-        setQuestionIndex(0)
+
+        ////////////////////THIS IS WHERE SCORE WILL BE PUSHED//////////////////////////////////
         setDisplay('start')
+        setQuestionIndex(0)
+        console.log('clearing score')
+        setScore(0)
     }
 
     const handleFinished = () => {
-        console.log('handlefinished running')
         setDisplay('showScore')
     }
 
@@ -54,16 +65,12 @@ const Quiz = () => {
 
     useEffect(() => {
 
-        // if (questionIndex === 9) {
-        //     setDisplay('showScore')
-        // }
-
-        if (questionIndex === -1) {
-            console.log('good morning')
+        if (questionIndex === 10) {
+            handleFinished()
         }
         else if (questionIndex >= 0 && questionIndex <= 9) {
-            console.log('every day im shufflin')
             setAnswerArray(shuffle([questions[questionIndex]['correct_answer'], ...questions[questionIndex]['incorrect_answers']]))
+
         }
 
 
@@ -98,28 +105,32 @@ const Quiz = () => {
                 <h1>LOADING</h1>
             )
         case 'questionRender':
-            if (questionIndex !== 9) {
-                return (
-                    <div>
-                        <QuestionRender
-                            incrementIndex={incrementIndex}
-                            questionHeading={questions[questionIndex]['question']}
-                            answerArray={answerArray}
-                        />
-
-                    </div>
-                )
-            }
-            // else {
-
-            // }
-        case 'showScore':
             return (
                 <div>
-                    < ShowScore ReturnButton={handleReturnToMenu} />
+                    <QuestionRender
+                        incrementIndex={incrementIndex}
+                        questionIndex={questionIndex}
+                        questionHeading={questions[questionIndex]['question']}
+                        answerArray={answerArray}
+                        incrementScore={incrementScore}
+                        correctAnswer={questions[questionIndex]['correct_answer']}
+                    />
+
+                    {/* <button onClick={event => incrementIndex(event)}>Next</button> */}
+
                 </div>
             )
 
+        case 'showScore':
+            return (
+                <div>
+                    < ShowScore  
+                    ReturnButton={handleReturnToMenu}
+                    score={score}
+                    
+                    />
+                </div>
+            )
 
         default:
             return (

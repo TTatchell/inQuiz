@@ -4,10 +4,10 @@ const ShowScore = (props) => {
     return (
         <div>
             <h1>
-                This is your Score
+                You Scored {props.score} out of 10!
             </h1>
 
-            <button onClick={props.ReturnButton()}>
+            <button onClick={event => props.ReturnButton(event)}>
                 Return To Menu
             </button>
 
