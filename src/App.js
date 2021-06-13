@@ -1,10 +1,11 @@
-import './App.css';
+import './Styles/App.css';
 import { useState } from 'react'
 import Quiz from './Components/Quiz'
 import MenuBar from './Components/MenuBar'
 import LockScreen from './Components/LockScreen'
-import TestBackEnd from './Components/TestBackEnd';
 import ScoreGraph from './Components/ScoreGraph'
+import Button from 'react-bootstrap/Button'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
 
