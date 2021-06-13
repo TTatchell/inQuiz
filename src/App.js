@@ -11,19 +11,18 @@ function App() {
   const [appDisplay, setAppDisplay] = useState('locked')
   const [username, setUserName] = useState('')
 
-  const updateUsername = (name) => {
-    setUserName(name)
-  }
+  const updateUsername = (name) => {setUserName(name)}
 
-  const submitUsername = () => {
-    setAppDisplay('unlocked')
-  }
+  const submitUsername = () => {setAppDisplay('unlocked')}
 
   const handleLogOut = () => {
     setAppDisplay('locked')
     setUserName('')
-
   }
+
+  const handleScoreGraph = () => {setAppDisplay('scoreGraph')}
+
+  const handleQuizButton = () => {setAppDisplay('unlocked')}
 
   switch (appDisplay) {
     case 'unlocked':
@@ -31,8 +30,10 @@ function App() {
         <div className="App">
           < MenuBar
             username={username}
-            handleLogOut={handleLogOut} />
-            
+            handleLogOut={handleLogOut}
+            handleScoreGraph={handleScoreGraph}
+            handleQuizButton={handleQuizButton} />
+
           < Quiz username={username} />
         </div>
       )
@@ -45,8 +46,18 @@ function App() {
         />
       )
 
-    case 'testBackEnd':
-      return < TestBackEnd />
+    case 'scoreGraph':
+      return (
+        <div>
+
+          < MenuBar
+            username={username}
+            handleLogOut={handleLogOut}
+            handleScoreGraph={handleScoreGraph}
+            handleQuizButton={handleQuizButton} />
+          <ScoreGraph />
+        </div>
+      )
 
     default:
       return (

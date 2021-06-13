@@ -1,5 +1,4 @@
 export const categoryArray = [
-    'Any Category',
     'General Knowledge',
     'Books',
     'Film',
@@ -27,7 +26,6 @@ export const categoryArray = [
 ]
 
 export const valueArray = [
-    'any',
     '9',
     '10',
     '11',

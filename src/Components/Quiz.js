@@ -9,7 +9,7 @@ import SendScore from './SendScore'
 const Quiz = (props) => {
 
     const [display, setDisplay] = useState('start')
-    const [category, setCategory] = useState('any')
+    const [category, setCategory] = useState('9')
     const [questions, setQuestions] = useState({})
     const [questionIndex, setQuestionIndex] = useState(-1)
     const [answerArray, setAnswerArray] = useState([])
