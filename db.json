@@ -6,9 +6,29 @@
       "score": 7
     },
     {
-      "UserName": "John",
-      "id": 2,
-      "score": 2
+      "Username": "ghfj",
+      "Score": 0,
+      "id": 2
+    },
+    {
+      "Username": "ghfj",
+      "Score": 0,
+      "id": 3
+    },
+    {
+      "Username": "ghfj",
+      "Score": 0,
+      "id": 4
+    },
+    {
+      "Username": "ghfj",
+      "Score": 0,
+      "id": 5
+    },
+    {
+      "Username": "ghfj",
+      "Score": 1,
+      "id": 6
     }
   ]
 }

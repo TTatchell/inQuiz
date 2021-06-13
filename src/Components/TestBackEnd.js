@@ -1,12 +1,8 @@
 //json-server --watch db.json --port 3001
 
-import { useState } from 'react'
+
 
 const TestBackEnd = () => {
-
-
-
-    const [posts, setPosts] = useState([])
 
 
     const handleGet = async () => {

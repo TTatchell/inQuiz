@@ -4,8 +4,9 @@ import { categoryArray, valueArray } from '../Data/QuizCategories'
 import { QuestionFetch } from './QuestionFetch'
 import QuestionRender from './QuestionRender'
 import ShowScore from './ShowScore'
+import SendScore from './SendScore'
 
-const Quiz = () => {
+const Quiz = (props) => {
 
     const [display, setDisplay] = useState('start')
     const [category, setCategory] = useState('any')
@@ -45,12 +46,7 @@ const Quiz = () => {
         return array
     }
 
-
-
-
     const handleReturnToMenu = () => {
-        console.log('PUSHING SCORE TO SERVER')
-        ////////////////////THIS IS WHERE SCORE WILL BE PUSHED//////////////////////////////////
         setDisplay('start')
         setQuestionIndex(0)
         console.log('resetting score state')
@@ -58,6 +54,11 @@ const Quiz = () => {
     }
 
     const handleFinished = () => {
+        const pack = {
+            Username: props.username,
+            Score: score
+        }
+        SendScore(pack)
         setDisplay('showScore')
     }
 
