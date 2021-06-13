@@ -1,32 +1,32 @@
 {
   "highscores": [
     {
-      "UserName": "Tim",
-      "score": 7,
+      "Username": "Tim",
+      "Score": 7,
       "id": 1
     },
     {
-      "Username": "ghfj",
-      "Score": 0,
+      "Username": "Scout",
+      "Score": 4,
       "id": 2
     },
     {
-      "Username": "ghfj",
-      "Score": 0,
+      "Username": "John",
+      "Score": 2,
       "id": 3
     },
     {
-      "Username": "ghfj",
-      "Score": 0,
+      "Username": "Elfie",
+      "Score": 8,
       "id": 4
     },
     {
-      "Username": "ghfj",
-      "Score": 0,
+      "Username": "Mia",
+      "Score": 2,
       "id": 5
     },
     {
-      "Username": "ghfj",
+      "Username": "Sarah",
       "Score": 1,
       "id": 6
     }
