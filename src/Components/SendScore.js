@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 const SendScore = (pack) => {
     
     fetch('http://localhost:3001/highscores', {

@@ -5,6 +5,7 @@ import { QuestionFetch } from './QuestionFetch'
 import QuestionRender from './QuestionRender'
 import ShowScore from './ShowScore'
 import SendScore from './SendScore'
+import { Button } from 'react-bootstrap'
 
 const Quiz = (props) => {
 
@@ -14,6 +15,8 @@ const Quiz = (props) => {
     const [questionIndex, setQuestionIndex] = useState(-1)
     const [answerArray, setAnswerArray] = useState([])
     const [score, setScore] = useState(0)
+    const [correctAnswers, setCorrectAnswers] = useState([])
+    const [wrongAnswers, setWrongAnswers] = useState([])
 
     const handleBegin = async () => {
         setDisplay('loading')
@@ -22,7 +25,7 @@ const Quiz = (props) => {
         setDisplay('questionRender')
     }
 
-    const handleCategoryChange = (event) => {setCategory(event.target.value)}
+    const handleCategoryChange = (event) => { setCategory(event.target.value) }
 
     const incrementIndex = async () => {
         if (questionIndex < 10) {
@@ -30,10 +33,11 @@ const Quiz = (props) => {
         }
     }
 
-    const incrementScore = () => {
-        console.log('correct!')
-        setScore(score + 1)
-    }
+    const incrementScore = () => {setScore(score + 1)}
+
+    const addCorrectAnswer = (correctAnswer) => {setCorrectAnswers(correctAnswers => [...correctAnswers, correctAnswer])}
+
+    const addWrongAnswer = (wrongAnswer) => {setWrongAnswers(correctAnswers => [...correctAnswers, wrongAnswer])}
 
     //Thanks to javascriopt.info for the Fisher-Yates shuffle.
     const shuffle = (array) => {
@@ -47,39 +51,37 @@ const Quiz = (props) => {
     const handleReturnToMenu = () => {
         setDisplay('start')
         setQuestionIndex(0)
-        console.log('resetting score state')
         setScore(0)
     }
 
-    const handleFinished = () => {
-        const pack = {
-            Username: props.username,
-            Score: score
-        }
-        SendScore(pack)
-        setDisplay('showScore')
-    }
 
 
 
     useEffect(() => {
-
         if (questionIndex === 10) {
-            handleFinished()
+            const pack = {
+                Username: props.username,
+                Score: score
+            }
+            SendScore(pack)
+            setDisplay('showScore')
         }
         else if (questionIndex >= 0 && questionIndex <= 9) {
             setAnswerArray(shuffle([questions[questionIndex]['correct_answer'], ...questions[questionIndex]['incorrect_answers']]))
         }
-    }, [questionIndex, questions])
+    }, [questionIndex, questions, score, props.username])
 
 
     switch (display) {
         case 'start':
             return (
                 <div className='quizContainer'>
-                    <h1>Select A Quiz</h1>
+                    <h1>Start A Quiz</h1>
+                    <br></br>
+
                     <form>
-                        <label htmlFor="categories">Choose A Topic:</label>
+                        <label htmlFor="categories" id='topicHeader'>Choose A Topic:</label> 
+                        <br></br>
 
                         <select
                             name="categories"
@@ -91,8 +93,11 @@ const Quiz = (props) => {
                             {categoryArray.map((optionN, index) => <option value={valueArray[index]} key={uuid()}>{optionN}</option>)}
                         </select>
                     </form>
+                    <br></br>
 
-                    <button onClick={event => handleBegin(event)}>BEGIN</button>
+                    <Button onClick={event => handleBegin(event)}>BEGIN</Button>
+                    <br></br>
+                    <br></br>
 
                 </div>)
 
@@ -110,10 +115,9 @@ const Quiz = (props) => {
                         answerArray={answerArray}
                         incrementScore={incrementScore}
                         correctAnswer={questions[questionIndex]['correct_answer']}
+                        addCorrectAnswer={addCorrectAnswer}
+                        addWrongAnswer={addWrongAnswer}
                     />
-
-                    {/* <button onClick={event => incrementIndex(event)}>Next</button> */}
-
                 </div>
             )
 
@@ -123,6 +127,8 @@ const Quiz = (props) => {
                     < ShowScore
                         ReturnButton={handleReturnToMenu}
                         score={score}
+                        correctAnswers={correctAnswers}
+                        wrongAnswers={wrongAnswers}
 
                     />
                 </div>
@@ -135,10 +141,6 @@ const Quiz = (props) => {
                 </div>
             )
     }
-
-
-
-
 }
 
 export default Quiz

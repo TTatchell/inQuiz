@@ -10,3 +10,29 @@
 .form-label {
     font-size: large;
 }
+
+#root > div > div:nth-child(2) > div > div.correctAnswer{
+    background-color: #d8ffd8;
+    border:2px solid #31fd31;
+    border-radius: 25px
+}
+
+#root > div > div:nth-child(2) > div > div.wrongAnswer{
+    background-color: #fbadad;
+    border:2px solid #fd3131;
+    border-radius: 25px
+}
+
+#topicHeader{
+    font-size: large;
+}
+
+#root > div > div.quizContainer {
+    background-color: #e36cc4;
+    border:4px solid #e36cc4;
+    border-radius: 25px
+}
+
+#root > div > div.container > nav{
+    padding-top: 10px;
+}

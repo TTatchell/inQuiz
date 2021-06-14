@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { decode } from 'he'
 import uuid from 'react-uuid'
+import { Form, Button } from 'react-bootstrap'
 
 const QuestionRender = (props) => {
 
@@ -13,11 +14,12 @@ const QuestionRender = (props) => {
     const handleSubmit = (event) => {
         if (selectedAnswer === props.correctAnswer) {
             props.incrementScore()
+            props.addCorrectAnswer(`${decode(props.questionHeading)} $# ${props.correctAnswer}`)
         }
-
+        else {
+            props.addWrongAnswer(`${decode(props.questionHeading)} $# ${props.correctAnswer} $# ${selectedAnswer}`)
+        }
         props.incrementIndex()
-
-
     }
 
 
@@ -26,18 +28,24 @@ const QuestionRender = (props) => {
             <h2>{`Question ${props.questionIndex + 1}.`}</h2>
             <h1>{decode(props.questionHeading)}</h1>
 
-            <div onChange={event=> handleRadioChange(event)}>
-
+            <Form >
 
                 {props.answerArray.map(answer =>
-                    <div key={uuid()}>
+                    <div key={uuid()} >
+
                         <input
+                            className='multipleChoiceOption'
+                            onChange={event => handleRadioChange(event)}
                             type='radio'
                             key={uuid()}
                             name='choice'
                             value={answer}
+                            checked={selectedAnswer === answer}>
 
-                        /> {decode(answer)}
+                        </input>
+                        {' '}
+                        {decode(answer)}
+
                         <br></br>
                     </div>
 
@@ -45,10 +53,10 @@ const QuestionRender = (props) => {
 
                 )}
 
-            </div>
+            </Form>
 
 
-            <button onClick={event => handleSubmit(event)}>Submit</button>
+            <Button onClick={event => handleSubmit(event)}>Submit</Button>
 
         </div>
 

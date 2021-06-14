@@ -29,6 +29,21 @@
       "Username": "Sarah",
       "Score": 1,
       "id": 6
+    },
+    {
+      "Username": "scout",
+      "Score": 4,
+      "id": 7
+    },
+    {
+      "Username": "scout",
+      "Score": 6,
+      "id": 8
+    },
+    {
+      "Username": "scout",
+      "Score": 2,
+      "id": 9
     }
   ]
 }

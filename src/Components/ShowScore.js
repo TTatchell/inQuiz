@@ -1,4 +1,4 @@
-
+import { Button } from 'react-bootstrap'
 
 const ShowScore = (props) => {
     return (
@@ -6,10 +6,55 @@ const ShowScore = (props) => {
             <h1>
                 You Scored {props.score} out of 10!
             </h1>
+            <br></br>
 
-            <button onClick={event => props.ReturnButton(event)}>
+            <div className='correctAnswer'>
+
+                <h3>Correct Answers:</h3>
+                {props.correctAnswers.map(answer => {
+                    const split = answer.split('$#')
+
+                    return (
+                        <div >
+                            <h4>{split[0]}</h4>
+                            <br></br>
+                            <h5>{split[1]}</h5>
+                            <br></br>
+                            <br></br>
+                        </div>
+                    )
+                }
+                )}
+            </div>
+            <br></br>
+
+            <div className='wrongAnswer'>
+
+                <h3>Incorrect Answers:</h3>
+
+                {props.wrongAnswers.map(answer => {
+                    const split = answer.split('$#')
+
+                    return (
+                        <div>
+                            <h4>{split[0]}</h4>
+                            <br></br>
+                            <h5>Correct:{split[1]}</h5>
+                            <h5>You Answered:{split[2]}</h5>
+                            <br></br>
+                        </div>
+                    )
+                }
+                )}
+            </div>
+
+            <br></br>
+
+            <Button onClick={event => props.ReturnButton(event)}>
                 Return To Menu
-            </button>
+            </Button>
+
+            <br></br>
 
         </div>
     )
