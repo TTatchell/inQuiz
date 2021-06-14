@@ -4,60 +4,60 @@ import Quiz from './Components/Quiz'
 import MenuBar from './Components/MenuBar'
 import LockScreen from './Components/LockScreen'
 import ScoreGraph from './Components/ScoreGraph'
-import Button from 'react-bootstrap/Button'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import { Container } from 'react-bootstrap/'
+
 
 function App() {
 
   const [appDisplay, setAppDisplay] = useState('locked')
   const [username, setUserName] = useState('')
 
-  const updateUsername = (name) => {setUserName(name)}
+  const updateUsername = (name) => { setUserName(name) }
 
-  const submitUsername = () => {setAppDisplay('unlocked')}
+  const submitUsername = () => { setAppDisplay('unlocked') }
 
   const handleLogOut = () => {
     setAppDisplay('locked')
     setUserName('')
   }
 
-  const handleScoreGraph = () => {setAppDisplay('scoreGraph')}
+  const handleScoreGraph = () => { setAppDisplay('scoreGraph') }
 
-  const handleQuizButton = () => {setAppDisplay('unlocked')}
+  const handleQuizButton = () => { setAppDisplay('unlocked') }
 
   switch (appDisplay) {
     case 'unlocked':
       return (
-        <div className="App">
-          < MenuBar
-            username={username}
-            handleLogOut={handleLogOut}
-            handleScoreGraph={handleScoreGraph}
-            handleQuizButton={handleQuizButton} />
-
-          < Quiz username={username} />
-        </div>
+        <Container fluid >
+            < MenuBar
+              username={username}
+              handleLogOut={handleLogOut}
+              handleScoreGraph={handleScoreGraph}
+              handleQuizButton={handleQuizButton} />
+            < Quiz username={username} />
+        </Container>
       )
 
     case 'locked':
       return (
-        < LockScreen
-          updateUsername={updateUsername}
-          submitUsername={submitUsername}
-        />
+        <Container fluid className="p-0">
+          < LockScreen
+            updateUsername={updateUsername}
+            submitUsername={submitUsername}
+          />
+        </Container>
       )
 
     case 'scoreGraph':
       return (
-        <div>
-
+        <Container fluid>
           < MenuBar
             username={username}
             handleLogOut={handleLogOut}
             handleScoreGraph={handleScoreGraph}
             handleQuizButton={handleQuizButton} />
           <ScoreGraph />
-        </div>
+        </Container>
       )
 
     default:

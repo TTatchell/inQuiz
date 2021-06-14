@@ -1,4 +1,6 @@
-import { Button, Alert} from 'react-bootstrap'
+import { Button, Image, Form } from 'react-bootstrap'
+import logo from '../images/cropped.png'
+
 
 const LockScreen = (props) => {
 
@@ -14,14 +16,29 @@ const LockScreen = (props) => {
 
     return (
         <div>
-            <Alert variant='primary'>ENTER NAME</Alert>
-            <input type='text' onChange={event => handleChange(event)}>
-            </input>
+            <Image
+                src={logo}
+                id='lockedLogo'
+                >
 
-            <Button onClick={event => handleSubmit(event)}>test button</Button>
-            
+                </Image>
+            <Form >
+                <Form.Label>Enter Name</Form.Label>
+                <Form.Control
+                    padding='2rem'
+                    type='text'
+                    placeholder='Type Away'
+                    onChange={event => handleChange(event)}
+                ></Form.Control>
+            </Form>
+            <br></br>
 
-
+            <Button
+                block
+                size="lg"
+                variant='primary'
+                onClick={event => handleSubmit(event)}>Log In
+            </Button>
         </div>
     )
 }

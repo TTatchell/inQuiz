@@ -1,3 +1,12 @@
-#lockedHeading {
+#root {
     text-align: center;
+}
+
+#lockedLogo {
+    width: 75%;
+    height: auto;
+}
+
+.form-label {
+    font-size: large;
 }

@@ -22,9 +22,7 @@ const Quiz = (props) => {
         setDisplay('questionRender')
     }
 
-    const handleCategoryChange = (event) => {
-        setCategory(event.target.value)
-    }
+    const handleCategoryChange = (event) => {setCategory(event.target.value)}
 
     const incrementIndex = async () => {
         if (questionIndex < 10) {
