@@ -1,4 +1,5 @@
 import { Button } from 'react-bootstrap'
+import uuid from 'react-uuid'
 
 const ShowScore = (props) => {
     return (
@@ -15,11 +16,9 @@ const ShowScore = (props) => {
                     const split = answer.split('$#')
 
                     return (
-                        <div >
+                        <div key={uuid()} >
                             <h4>{split[0]}</h4>
-                            <br></br>
                             <h5>{split[1]}</h5>
-                            <br></br>
                             <br></br>
                         </div>
                     )
@@ -36,9 +35,8 @@ const ShowScore = (props) => {
                     const split = answer.split('$#')
 
                     return (
-                        <div>
+                        <div key={uuid()}>
                             <h4>{split[0]}</h4>
-                            <br></br>
                             <h5>Correct:{split[1]}</h5>
                             <h5>You Answered:{split[2]}</h5>
                             <br></br>
