@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/TTatchell/inquiz/static/css/main.7508e4ac.chunk.css",
+    "main.js": "/TTatchell/inquiz/static/js/main.c9d89dcb.chunk.js",
+    "main.js.map": "/TTatchell/inquiz/static/js/main.c9d89dcb.chunk.js.map",
+    "runtime-main.js": "/TTatchell/inquiz/static/js/runtime-main.1d3ae48d.js",
+    "runtime-main.js.map": "/TTatchell/inquiz/static/js/runtime-main.1d3ae48d.js.map",
+    "static/css/2.0544ea27.chunk.css": "/TTatchell/inquiz/static/css/2.0544ea27.chunk.css",
+    "static/js/2.4c61b72b.chunk.js": "/TTatchell/inquiz/static/js/2.4c61b72b.chunk.js",
+    "static/js/2.4c61b72b.chunk.js.map": "/TTatchell/inquiz/static/js/2.4c61b72b.chunk.js.map",
+    "static/js/3.3208a5fd.chunk.js": "/TTatchell/inquiz/static/js/3.3208a5fd.chunk.js",
+    "static/js/3.3208a5fd.chunk.js.map": "/TTatchell/inquiz/static/js/3.3208a5fd.chunk.js.map",
+    "index.html": "/TTatchell/inquiz/index.html",
+    "static/css/2.0544ea27.chunk.css.map": "/TTatchell/inquiz/static/css/2.0544ea27.chunk.css.map",
+    "static/css/main.7508e4ac.chunk.css.map": "/TTatchell/inquiz/static/css/main.7508e4ac.chunk.css.map",
+    "static/js/2.4c61b72b.chunk.js.LICENSE.txt": "/TTatchell/inquiz/static/js/2.4c61b72b.chunk.js.LICENSE.txt",
+    "static/media/bootstrap.min.css": "/TTatchell/inquiz/static/media/glyphicons-halflings-regular.be810be3.woff2"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1d3ae48d.js",
+    "static/css/2.0544ea27.chunk.css",
+    "static/js/2.4c61b72b.chunk.js",
+    "static/css/main.7508e4ac.chunk.css",
+    "static/js/main.c9d89dcb.chunk.js"
+  ]
+}
